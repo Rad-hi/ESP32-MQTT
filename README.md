@@ -10,4 +10,4 @@ The diagram below illustrates the working principle of the code.
 
 The code might even be considered as heavily commented, so I hope it'll help prefectly understanding how it works.
 
-<img src="Images/Logic_flow.png" width="720">
+<img src="Images/Logic_flow.jpg" width="720">
