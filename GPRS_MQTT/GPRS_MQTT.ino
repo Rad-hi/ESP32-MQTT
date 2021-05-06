@@ -1,5 +1,5 @@
-#include "GPRS.h"
-#include "MQTT.h"
+#include "GPRS.h" // You have to add your MQTT broker info here!
+#include "MQTT.h" // You have to add your APN here!
 
 #include <ArduinoJson.h>
 #define JSON_BUFFER_SIZE       400     // Calculate the right number using:
@@ -10,7 +10,6 @@
 
 StaticJsonDocument<JSON_BUFFER_SIZE> DATA; // Json file that'll contain all data
 
-char mqtt_buffer[JSON_BUFFER_SIZE]; // Container for the data to be sent
 unsigned long last_time_published = 0;
 int packet_id = 0; // Variable used for demo purposes
 
@@ -39,10 +38,15 @@ void loop() {
 void communicate_(){
 
   MQTT_setup();
-  MQTT_connect();
 
+  // Container for the data to be sent
+  char mqtt_buffer[JSON_BUFFER_SIZE]; 
+  
   // Prepare the Json file for sending
   serializeJson(DATA, mqtt_buffer);
+
+  // I did have some issues with the broker timing-out if I don't connect to it just before sending
+  MQTT_connect();
   
   // Consult MQTT.cpp for send_data()
   send_data(mqtt_buffer);
