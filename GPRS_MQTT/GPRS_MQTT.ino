@@ -1,5 +1,5 @@
-#include "GPRS.h" // You have to add your MQTT broker info here!
-#include "MQTT.h" // You have to add your APN here!
+#include "GPRS.h" // You have to add your APN here!
+#include "MQTT.h" // You have to add your MQTT broker info here!
 
 #include <ArduinoJson.h>
 #define JSON_BUFFER_SIZE       400     // Calculate the right number using:
@@ -48,7 +48,7 @@ void communicate_(){
   // I did have some issues with the broker timing-out if I don't connect to it just before sending
   MQTT_connect();
   
-  // Consult MQTT.cpp for send_data()
+  // Consult MQTT.h for send_data()
   send_data(mqtt_buffer);
 
   Serial.print("Published: ");
