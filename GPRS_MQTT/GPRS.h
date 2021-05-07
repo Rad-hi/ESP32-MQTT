@@ -6,7 +6,7 @@
   #include <TinyGsmClient.h> //https://github.com/vshymanskyy/TinyGSM
   
   // TTGO T-Call pin definitions
-  #define MODEM_RST               5
+  #define MODEM_RST		  5
   #define MODEM_PWRKEY            4
   #define MODEM_POWER_ON          23
   #define MODEM_TX                27
@@ -43,9 +43,7 @@
   void GPRS_wake_up();
   void GPRS_put_to_sleep();
   bool GPRS_connectivity_status();
-  
-  
-  
+
   // Setup variables
   unsigned long GPRS_last_update = 0;
   int  gprs_setup_state = 0;
@@ -99,7 +97,7 @@
         if(!connect_ready) {
           connect_ready = true;
           
-          // Unlock SIM if PIN is required (;provided)
+          // Unlock SIM if PIN is required
           if (SIM_PIN && modem.getSimStatus() != 3 ) {
             modem.simUnlock(SIM_PIN);
           }
